@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parking</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #01070d;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
+      }
+
+      .park {
+        max-width: 600px;
+        width: 100%;
+        padding: 30px;
+        border-radius: 20px;
+        background-color: #5a301a;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .park h2 {
+        color: #175af0;
+        font-size: 24px;
+        margin-bottom: 15px;
+      }
+
+      .park h3 {
+        color: #dedede;
+        font-size: 18px;
+        margin-bottom: 10px;
+        text-align: left;
+        background-color: green;
+        padding: 7px;
+        border-radius: 10px;
+      }
+
+      .park select {
+        background: #ed1d77;
+        border-radius: 5px;
+        color: white;
+        padding: 10px;
+        width: 100%;
+        font-size: 16px;
+        margin-bottom: 20px;
+      }
+
+      .park button {
+        background: #4d09f9;
+        border-radius: 20px;
+        color: white;
+        padding: 12px 25px;
+        font-size: 18px;
+        cursor: pointer;
+        border: none;
+        width: 100%;
+        transition: background 0.3s;
+      }
+
+      .park button:hover {
+        background: green;
+      }
+
+      #output {
+        border-radius: 20px;
+        background-color: #ffc107;
+        margin: 10px 0;
+        padding: 15px;
+        font-size: 20px;
+        font-weight: bold;
+        color: #212121;
+        display: none;
+      }
+      @media screen and (max-width: 600px) {
+        .park {
+          padding: 15px;
+        }
+
+        .park h2 {
+          font-size: 20px;
+        }
+
+        .park h3 {
+          font-size: 16px;
+        }
+
+        .park select {
+          font-size: 14px;
+        }
+
+        .park button {
+          font-size: 16px;
+        }
+
+        #output {
+          font-size: 18px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="park">
+      <h2>Parking Lot Receipt</h2>
+      <h3>
+        <p>(1.) 1 hour: 30 Rupees</p>
+        <p>(2.) 2 hours: 50 Rupees</p>
+        <p>(3.) 3 hours: 70 Rupees</p>
+        <p>(4.) 4 hours: 80 Rupees</p>
+        <p>(5.) 5 hours: 100 Rupees...</p>
+      </h3>
+
+      <h3>Select Parking Time:</h3>
+      <select id="inp">
+        <option value="">Select</option>
+        <option value="30 Rupees">1 hour</option>
+        <option value="50 Rupees">2 hours</option>
+        <option value="70 Rupees">3 hours</option>
+        <option value="80 Rupees">4 hours</option>
+        <option value="100 Rupees">5 hours</option>
+        <option value="130 Rupees">6 hour</option>
+        <option value="150 Rupees">7 hours</option>
+        <option value="170 Rupees">8 hours</option>
+        <option value="180 Rupees">9 hours</option>
+        <option value="200 Rupees">10 hours</option>
+      </select>
+
+      <h1 id="output"></h1>
+
+      <button type="button">Click me</button>
+    </div>
+
+    <script>
+      let button = document.querySelector("button");
+      button.addEventListener("click", display);
+
+      function display() {
+        let input = document.querySelector("#inp");
+        let output = document.querySelector("#output");
+        let selectedValue = input.options[input.selectedIndex].value;
+        if (selectedValue) {
+          output.innerHTML = `You selected: ${selectedValue}`;
+          output.style.display = "block";
+        } else {
+          output.style.display = "none";
+        }
+      }
+    </script>
+  </body>
+</html>
